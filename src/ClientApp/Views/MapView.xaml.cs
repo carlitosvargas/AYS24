@@ -1,18 +1,20 @@
 ﻿using Microsoft.Maui.Controls.Maps;
+using Microsoft.Maui.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace eShop.ClientApp.Views;
 
-public partial class MapView : ContentPageBase
+public partial class MapView
 {
     public MapView(MapViewModel viewModel)
     {
         BindingContext = viewModel;
         InitializeComponent();
 
-        var map = new Microsoft.Maui.Controls.Maps.Map(new Microsoft.Maui.Maps.MapSpan(new Location(0, 0), 0,0));
+        var map = new Map(new MapSpan(new Location(0, 0), 0, 0));
     }
 
-    async void Pin_MarkerClicked(System.Object sender, Microsoft.Maui.Controls.Maps.PinClickedEventArgs e)
+    private async void Pin_MarkerClicked(Object sender, PinClickedEventArgs e)
     {
         e.HideInfoWindow = true;
 
